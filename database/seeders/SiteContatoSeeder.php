@@ -15,7 +15,7 @@ class SiteContatoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        /*
         $contato = new SiteContato();
         $contato->nome              = 'Sistema';
         $contato->telefone          = '(27) 99568-6559';
@@ -23,5 +23,10 @@ class SiteContatoSeeder extends Seeder
         $contato->motivo_contato    = 1;
         $contato->mensagem          = 'Aqui o sistema é bruto!';
         $contato->save();
+        */
+
+        //factory(SiteContato::class, 100)->create();        //Laravel 7.0
+
+        SiteContato::factory()->count(100) ->create(); //Laravel 9.9
     }
 }
