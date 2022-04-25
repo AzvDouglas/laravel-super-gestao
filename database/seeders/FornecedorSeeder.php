@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Fornecedor;
@@ -32,12 +33,14 @@ class FornecedorSeeder extends Seeder
             'email' => 'contato@fornecedor200.com.br'
         ]);
 
-        //Método Insert
+        //Método Insert (raw)
         DB::table('fornecedores')->insert([
             'nome'  => 'Fornecedor Carioca',
             'site'  => 'fornecedor-rj.com.br',
             'uf'    => 'RJ',
-            'email' => 'contato@fornecedor300.com.br'
+            'email' => 'contato@fornecedor300.com.br',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
     }
