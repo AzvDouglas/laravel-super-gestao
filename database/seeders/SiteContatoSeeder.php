@@ -20,7 +20,7 @@ class SiteContatoSeeder extends Seeder
         $contato->nome              = 'Sistema';
         $contato->telefone          = '(27) 99568-6559';
         $contato->email             = 'contato@super.gestao.com';
-        $contato->motivo_contato    = 1;
+        $contato->motivo            = 1;
         $contato->mensagem          = 'Aqui o sistema é bruto!';
         $contato->save();
         */
