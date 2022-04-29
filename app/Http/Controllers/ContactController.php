@@ -30,12 +30,27 @@ class ContactController extends Controller
         $contato->save();
         */
 
-        //Também preenche o array
+        /*
         $contato = new SiteContato();
         $contato->fill($request->all());
-
+        $contato->save();
         print_r($contato->getAttributes());
+        */
 
         return view('site.contact');
+    }
+
+    public function salvar(Request $request) {
+        //dd($request);
+        //Validação dos dados do formolário recebidos pelo método request
+        $request->validate([
+            'nome'      => 'required|min:3|max:40',
+            'telefone'  => 'required|',
+            'email'     => 'required',
+            'motivo'    => 'required',
+            'mensagem'  => 'required|max:2000'
+        ]);
+
+        SiteContato::create($request->all());
     }
 }

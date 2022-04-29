@@ -21,7 +21,7 @@ use App\Http\Controllers\FornecedorController;
 Route::get('/', [PrincipalController::class, 'getPrincipal'])->name('site.index');
 Route::get('/sobre-nos', [SobreNosController::class, 'getAboutUs'])->name('site.sobrenos');
 Route::get('/contact', [ContactController::class, 'getContact'])->name('site.contato');
-Route::post('/contact', [ContactController::class, 'getContact'])->name('site.contato');
+Route::post('/contact', [ContactController::class, 'salvar'])->name('site.contato');
 Route::get('/login', function () {return 'login';})->name('site.login');
 
 Route::prefix('/app')->group(function (){
