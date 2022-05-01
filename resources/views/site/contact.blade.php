@@ -1,7 +1,6 @@
 @extends('site.layouts.basico')
 
 @section('titulo', 'Contato')
-
 @section('conteudo')
 
     @include('site.layouts._components.nav-bar')
@@ -19,6 +18,8 @@
                 </div>
             </div>
         </div>
+
+    {{ print_r($motivo) }}
 
         <div class="rodape">
             <div class="redes-sociais">

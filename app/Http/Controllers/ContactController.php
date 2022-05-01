@@ -9,6 +9,12 @@ class ContactController extends Controller
 {
     public function getContact(Request $request)    {
 
+        $motivo = [
+            '1' => 'Dúvida',
+            '2' => 'Elogio',
+            '3' => 'Reclamação'
+        ];
+
         //var_dump($_POST);
         /*  Objeto Request
         echo '<pre>';
