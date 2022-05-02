@@ -18,12 +18,16 @@ class LogAcessoMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        //return $next($request);
         //dd($request);
 
         $ip = $request->server->get('REMOTE_ADDR');
         $rota = $request->getRequestUri();
         LogAcesso::create(['log'=>"IP $ip requisitou rota $rota"]);
-        return Response('Cheguamos no Middleware sem dar prosseguimento');
+        //return $next($request);
+        $resposta = $next($request);
+        $resposta->setStatusCode(201, 'Resposta HTTP alterada');
+        dd($resposta);
+
+        //return Response('Cheguamos no Middleware sem dar prosseguimento');
     }
 }

@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 
 class SobreNosController extends Controller
 {
-    /* Chamando um middleware através do controller
+    //Chamando um middleware através do controller
     public function __construct()
     {
-        $this->middleware(LogAcessoMiddleware::class);
+        $this->middleware('log.acesso');
     }
-    */
+
 
     public function getAboutUs()
     {

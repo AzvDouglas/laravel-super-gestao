@@ -19,13 +19,13 @@ use App\Http\Controllers\FornecedorController;
 |
 */
 
-Route::get('/', [PrincipalController::class, 'getPrincipal'])->name('site.index');
+Route::get('/', [PrincipalController::class, 'getPrincipal'])->name('site.index')->middleware('log.acesso');
 Route::get('/sobre-nos', [SobreNosController::class, 'getAboutUs'])->name('site.sobrenos');
 Route::get('/contact', [ContactController::class, 'getContact'])->name('site.contato');
 Route::post('/contact', [ContactController::class, 'salvar'])->name('site.contato');
 Route::get('/login', function () {return 'login';})->name('site.login');
 
-Route::prefix('/app')->group(function (){
+Route::middleware(['log.acesso', 'auth'])->prefix('/app')->group(function (){
     Route::get('/clientes', function (){return 'Clientes'; })->name('app.clientes');
     Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedores');
     Route::get('/produtos', function (){return 'Produtos'; })->name('app.produtos');
