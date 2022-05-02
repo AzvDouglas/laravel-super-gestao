@@ -46,13 +46,24 @@ class ContactController extends Controller
     public function salvar(Request $request) {
         //dd($request);
         //Validação dos dados do formolário recebidos pelo método request
-        $request->validate([
+        $rules =         [
             'nome'          => 'required|min:3|max:40',
             'telefone'      => 'required|',
             'email'         => 'email',
             'motivos_id'    => 'required',
             'mensagem'      => 'required|max:2000'
-        ]);
+        ];
+        $feedback      =   [
+            'nome.min'            => 'O nome precisa ter pelo menos 3 letras',
+            'nome.max'            => 'O nome pode ter no máximo 40 caracteres',
+            'email'               => 'Insira um email válido',
+            'motivos_id.required' => 'Por favor, insira um motivo paro o contato',
+            'mensagem.max'        => 'A mensagem não pode ter mais que 2000 caracteres',
+
+            'required'            => 'O campo :attribute deve ser preenchido'
+        ];
+
+        $request->validate($rules, $feedback);
 
         SiteContato::create($request->all());
         return redirect()->route('site.index'); //Criar uma view indicando para o usuário que o contato foi realizado com sucesso e chamá-la neste redirect
