@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\MotivoContato;
+use App\Models\Motivo;
 
 class PrincipalController extends Controller
 {
     public function getPrincipal() {
 
-        $motivo = MotivoContato::all();
-        //dd($motivo);
-        return view('site.principal', ['motivo' => '$motivo']);
+        $motivos = Motivo::all();
+        //dd($motivos);
+        return view('site.principal', ['motivos' => $motivos]);
     }
 
 }

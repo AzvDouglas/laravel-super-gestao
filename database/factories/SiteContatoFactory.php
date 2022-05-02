@@ -22,7 +22,7 @@ class SiteContatoFactory extends Factory
             'nome'              => $this->faker->name(),
             'email'             => $this->faker->unique()->email(),
             'telefone'          => $this->faker->phoneNumber(),
-            'motivo'            => $this->faker->numberBetween(1,3),
+            'motivos_id'            => $this->faker->numberBetween(1,3),
             'mensagem'          => $this->faker->text(200)
         ];
     }

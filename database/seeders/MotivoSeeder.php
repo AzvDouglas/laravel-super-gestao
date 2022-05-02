@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\MotivoContato;
+use App\Models\Motivo;
 
 class MotivoSeeder extends Seeder
 {
@@ -16,8 +16,8 @@ class MotivoSeeder extends Seeder
     public function run()
     {
         //
-        MotivoContato::create(['motivo'=>'Dúvida']);
-        MotivoContato::create(['motivo'=>'Elogio']);
-        MotivoContato::create(['motivo'=>'Reclamação']);
+        Motivo::create(['motivo'=>'Dúvida']);
+        Motivo::create(['motivo'=>'Elogio']);
+        Motivo::create(['motivo'=>'Reclamação']);
     }
 }

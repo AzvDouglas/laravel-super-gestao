@@ -7,18 +7,13 @@
     <br>
     <input name="email" value="{{ old('email') }}" type="text" placeholder="E-mail" class="borda-preta">
     <br>
-    <select name="motivo" class="borda-preta">
+
+    <select name="motivos_id" >
         <option value="">Qual o motivo do contato?</option>
 
-        @foreach()
-            <option> </option>
+        @foreach($motivos as $key => $motivo)
+            <option value = "{{$motivo->id}}" {{old('motivos_id') == $motivo->id ? 'selected' : ''}}> {{$motivo->motivo}} </option>
         @endforeach
-
-         Mais simples, sem old ou consulta ao BD
-        <option value="1" {{old(motivo) == 1 ? 'selected' : '' }}>Dúvida</option>
-        <option value="2" {{old(motivo) == 2 ? 'selected' : '' }}>Elogio</option>
-        <option value="3" {{old(motivo) == 3 ? 'selected' : '' }}>Reclamação</option>
-
     </select>
     <br>
     <textarea name="mensagem" >{{ (old('mensagem')!= '') ? old('mensagem') : 'Preencha aqui a sua mensagem' }} </textarea>

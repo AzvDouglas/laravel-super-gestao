@@ -12,14 +12,13 @@
 
             <div class="informacao-pagina">
                 <div class="contato-principal">
-                    @component('site.layouts._components.form-contato')
+                    @component('site.layouts._components.form-contato', ['motivos' => $motivos])
                         <p>Nossa equipe está pronta para te atender. Entre em contato!</p>
                     @endcomponent
                 </div>
             </div>
         </div>
 
-    {{ print_r($motivo) }}
 
         <div class="rodape">
             <div class="redes-sociais">

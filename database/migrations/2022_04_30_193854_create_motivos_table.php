@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Motivo;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,11 +14,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('motivo_contatos', function (Blueprint $table) {
+        Schema::create('motivos', function (Blueprint $table) {
             $table->id();
             $table->string('motivo', 20);
             $table->timestamps();
         });
+
     }
 
     /**
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('motivo_contatos');
+        Schema::dropIfExists('motivos');
     }
 };
