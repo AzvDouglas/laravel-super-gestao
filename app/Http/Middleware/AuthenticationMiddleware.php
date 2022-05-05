@@ -14,7 +14,7 @@ class AuthenticationMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $auth_method)
+    public function handle(Request $request, Closure $next, $auth_method, $perfil, $parametro3,)
     {
         //Verifica se o usuário tem acesso a rota
         echo $auth_method.'<br>';
@@ -24,6 +24,9 @@ class AuthenticationMiddleware
         }
         if ($auth_method == 'ldap') {
             echo 'Verificar Usuário e Senha no Active Directory.'.'<br>';
+        }
+        if ($perfil == 'visitante') {
+            echo 'Exibir apenas alguns recursos'.'<br>';
         }
 
         if (false) {
