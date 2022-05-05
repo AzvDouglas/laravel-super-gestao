@@ -14,13 +14,22 @@ class AuthenticationMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $auth_method)
     {
         //Verifica se o usuário tem acesso a rota
-        if (true) {
+        echo $auth_method.'<br>';
+
+        if ($auth_method == 'padrao') {
+            echo 'Verificar o usuário e senha no banco.'.'<br>';
+        }
+        if ($auth_method == 'ldap') {
+            echo 'Verificar Usuário e Senha no Active Directory.'.'<br>';
+        }
+
+        if (false) {
             return $next($request);
         } else {
-            return Response('Acesso Negado! Usuário não autenticado para esta rota.');
+            return Response('Acesso Negado! Usuário não autenticado para esta rota. '.'<br>');
         }
     }
 }
