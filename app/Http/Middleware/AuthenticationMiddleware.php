@@ -16,6 +16,15 @@ class AuthenticationMiddleware
      */
     public function handle(Request $request, Closure $next, $auth_method, $perfil, $parametro3,)
     {
+        session_start();
+        if(isset($_SESSION['email']) && $_SESSION['email'] != '') {
+            return $next($request);
+        } else {
+            return redirect()->route('site.login', ['erro' => 2]);
+
+        }
+
+/*
         //Verifica se o usuário tem acesso a rota
         echo $auth_method.'<br>';
 
@@ -34,5 +43,6 @@ class AuthenticationMiddleware
         } else {
             return Response('Acesso Negado! Usuário não autenticado para esta rota. '.'<br>');
         }
+*/
     }
 }

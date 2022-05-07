@@ -24,14 +24,14 @@ Route::middleware('log.acesso')->
 Route::get('/sobre-nos', [SobreNosController::class, 'getAboutUs'])->name('site.sobrenos');
 Route::get('/contact', [ContactController::class, 'getContact'])->name('site.contato');
 Route::post('/contact', [ContactController::class, 'salvar'])->name('site.contato');
-Route::get('/login', [LoginController::class, 'index'])->name('site.login');
+Route::get('/login/{erro?}', [LoginController::class, 'index'])->name('site.login');
 Route::post('/login', [LoginController::class, 'autenticar'])->name('site.login');
 //Route::get('/login', function () {return 'login';})->name('site.login');
 
 Route::middleware(['autenticacao:ldap, visitante, p3, p4'])->prefix('/app')->group(function (){
-    Route::get('/clientes', function (){return 'Clientes'; })->name('app.clientes');
-    Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedores');
-    Route::get('/produtos', function (){return 'Produtos'; })->name('app.produtos');
+    Route::get('/cliente', function (){return 'Clientes'; })->name('app.clientes');
+    Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedores');
+    Route::get('/produto', function (){return 'Produtos'; })->name('app.produtos');
 });
 
 Route::get('/teste/{p1}/{p2}', [TestController::class, 'getTest'] )->name('teste');
