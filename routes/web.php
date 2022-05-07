@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Middleware\LogAcessoMiddleware;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
@@ -24,7 +24,9 @@ Route::middleware('log.acesso')->
 Route::get('/sobre-nos', [SobreNosController::class, 'getAboutUs'])->name('site.sobrenos');
 Route::get('/contact', [ContactController::class, 'getContact'])->name('site.contato');
 Route::post('/contact', [ContactController::class, 'salvar'])->name('site.contato');
-Route::get('/login', function () {return 'login';})->name('site.login');
+Route::get('/login', [LoginController::class, 'index'])->name('site.login');
+Route::post('/login', [LoginController::class, 'autenticar'])->name('site.login');
+//Route::get('/login', function () {return 'login';})->name('site.login');
 
 Route::middleware(['autenticacao:ldap, visitante, p3, p4'])->prefix('/app')->group(function (){
     Route::get('/clientes', function (){return 'Clientes'; })->name('app.clientes');
