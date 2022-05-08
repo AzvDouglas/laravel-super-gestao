@@ -26,16 +26,21 @@ Route::middleware('log.acesso')->
     get('/', [PrincipalController::class, 'getPrincipal'])->name('site.index');
 Route::get('/sobre-nos', [SobreNosController::class, 'getAboutUs'])->name('site.sobrenos');
 Route::get('/contact', [ContactController::class, 'getContact'])->name('site.contato');
-Route::post('/contact', [ContactController::class, 'salvar'])->name('site.contato');
+Route::post('/contact', [ContactController::class, 'salvar'])->name('site.contato.salvar');
 Route::get('/login/{erro?}', [LoginController::class, 'index'])->name('site.login');
-Route::post('/login', [LoginController::class, 'autenticar'])->name('site.login');
+Route::post('/login', [LoginController::class, 'autenticar'])->name('site.login.autenticar');
 //Route::get('/login', function () {return 'login';})->name('site.login');
 
 Route::middleware(['autenticacao:ldap, visitante, p3, p4'])->prefix('/app')->group(function (){
     Route::get('/home',[HomeController::class, 'index'])->name('app.home');
     Route::get('sair', [LoginController::class, 'sair'])->name('app.sair');
     Route::get('/client', [ClientController::class, 'index'])->name('app.client');
+
     Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
+    Route::post('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
+    Route::get('/fornecedor/adicionar', [FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
+    Route::post('/fornecedor/adicionar', [FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
+
     Route::get('/product', [ProductController::class, 'index'])->name('app.product');
 });
 

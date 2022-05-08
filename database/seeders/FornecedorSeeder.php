@@ -34,7 +34,7 @@ class FornecedorSeeder extends Seeder
         ]);
 
         //Método Insert (raw)
-        DB::table('fornecedores')->insert([
+        DB::table('fornecedor')->insert([
             'nome'  => 'Fornecedor Carioca',
             'site'  => 'fornecedor-rj.com.br',
             'uf'    => 'RJ',

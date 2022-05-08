@@ -5,7 +5,7 @@
 @include('site.layouts._components.nav-bar')
 @section('conteudo')
 
-
+    . {{-- Comentário de código, não vai aparecer no HTML --}}
     <div class="conteudo-destaque">
 
             <div class="esquerda">

@@ -40,7 +40,7 @@ return new class extends Migration
         //Recriando antiga coluna motivo na tabela site_contatos
         Schema::table('site_contatos', function (Blueprint $table) {
            $table->integer('motivo');
-           $table->dropForeign('site_contatos_motivos_foreign'); //<tabela>_<coluna>_foreign
+           $table->dropForeign('site_contatos_motivos_id_foreign'); //<tabela>_<coluna>_foreign
         });
 
         //Derrubando coluna motivos_id
