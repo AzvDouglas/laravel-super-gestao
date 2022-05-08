@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    @include('site.layouts._components.nav-bar')
+    @include('app.layouts._partials.topo')
     @yield('conteudo')
 </body>
 </html>

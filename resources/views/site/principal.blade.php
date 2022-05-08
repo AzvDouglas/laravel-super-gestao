@@ -2,8 +2,8 @@
 
 @section('titulo', 'Home')
 
+@include('site.layouts._components.nav-bar')
 @section('conteudo')
-    @include('site.layouts._components.nav-bar')
 
 
     <div class="conteudo-destaque">
@@ -35,5 +35,5 @@
                     @endcomponent
                 </div>
             </div>
-        </div>
+    </div>
 @endsection
