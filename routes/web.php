@@ -40,16 +40,11 @@ Route::middleware(['autenticacao:ldap, visitante, p3, p4'])->prefix('/app')->gro
     Route::post('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
     Route::get('/fornecedor/adicionar', [FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
     Route::post('/fornecedor/adicionar', [FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
+    Route::get('/fornecedor/editar/{id?}/{msg?}', [FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
 
     Route::get('/product', [ProductController::class, 'index'])->name('app.product');
 });
 
-Route::get('/teste/{p1}/{p2}', [TestController::class, 'getTest'] )->name('teste');
-
-Route::get('/rota2', function (){
-    echo 'Rota 2';
-    return redirect()->route('site.rota1');
-})->name('site.rota2');
 
 Route::fallback(function (){
     echo 'A rota que você digitou não existe.
@@ -57,3 +52,10 @@ Route::fallback(function (){
 });
 
 
+
+Route::get('/teste/{p1}/{p2}', [TestController::class, 'getTest'] )->name('teste');
+
+Route::get('/rota2', function (){
+    echo 'Rota 2';
+    return redirect()->route('site.rota1');
+})->name('site.rota2');
