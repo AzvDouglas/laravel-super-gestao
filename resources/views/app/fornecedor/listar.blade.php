@@ -1,4 +1,8 @@
-
+<style>
+    img, svg {
+        width: 30px;
+    }
+</style>
 <div class="conteudo-pagina">
 
     <div class="titulo-pagina">
@@ -40,6 +44,13 @@
                 </tbody>
 
             </table>
+                <div class="paginacao">
+                    {{ $fornecedores->appends($request)->links()}} <br>
+                    <!--Paginação de Registros-->
+                    Exibindo {{$fornecedores->count()}} fornecedores de {{$fornecedores->total()}}
+                    (de {{$fornecedores->firstItem()}} a {{$fornecedores->lastItem()}})
+
+                </div>
         </div>
 
     </div>
