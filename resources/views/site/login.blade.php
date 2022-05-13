@@ -1,9 +1,9 @@
 @extends('site.layouts.basico')
 
 @section('titulo', 'Login')
-@section('conteudo')
 
-    @include('site.layouts._components.nav-bar')
+@include('site.layouts._components.nav-bar')
+@section('conteudo')
 
     <div class="conteudo-pagina">
         <div class="titulo-pagina">
