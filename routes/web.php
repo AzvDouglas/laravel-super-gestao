@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
@@ -36,6 +37,7 @@ Route::middleware(['autenticacao:ldap, visitante, p3, p4'])->prefix('/app')->gro
     Route::get('sair', [LoginController::class, 'sair'])->name('app.sair');
     Route::get('/client', [ClientController::class, 'index'])->name('app.client');
 
+    //Fornecedores
     Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
     Route::post('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
     Route::get('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
@@ -44,7 +46,9 @@ Route::middleware(['autenticacao:ldap, visitante, p3, p4'])->prefix('/app')->gro
     Route::get('/fornecedor/editar/{id?}/{msg?}', [FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
     Route::get('/fornecedor/excluir/{id?}', [FornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
 
-    Route::get('/product', [ProductController::class, 'index'])->name('app.product');
+    //Produtos
+    Route::get('/product', [ProductController::class, 'index'])->name('app.product'); //Sem --resource
+    Route::resource('produto', ProdutoController::class)->name('index','app.produto');
 });
 
 
