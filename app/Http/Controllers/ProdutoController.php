@@ -80,6 +80,8 @@ class ProdutoController extends Controller
     public function edit(Produto $produto)
     {
         //
+        $unidades = Unidade::all();
+        return view('app.produto.edit', ['produto'=>$produto, 'unidades'=>$unidades]);
     }
 
     /**
@@ -89,9 +91,17 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
+    /*
+    //Payload/Carga útil: Parte dos dados transmitidos que é a mensagem real pretendida.
+    print_r( $request->all() );
+    echo '<br><br><br>';
+    print_r( $produto->getAttributes() ); //Instância do objeto $produto no estado anterior
+    */
     public function update(Request $request, Produto $produto)
     {
-        //
+        //Método update passando o payload por parâmetro  para a instância do objeto $produto
+        $produto->update($request->all());
+        return redirect()->route('produto.show',['produto'=>$produto->id]);
     }
 
     /**
