@@ -3,8 +3,8 @@
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ProdutoDetalheController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
@@ -50,6 +50,7 @@ Route::middleware(['autenticacao:ldap, visitante, p3, p4'])->prefix('/app')->gro
     //Route::get('/product', [ProductController::class, 'index'])->name('app.product'); //Sem --resource
     Route::resource('produto', ProdutoController::class); //Não é necessário setar nome nas rotas com o método resource
         // Os nomes são pré-definidos como 'nome da rota associado ao controlador'.'método do controlador' ->name('name.method')
+    Route::resource('produto-detalhe', ProdutoDetalheController::class);
 });
 
 

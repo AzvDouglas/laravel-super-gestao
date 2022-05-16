@@ -32,7 +32,6 @@
                     <input type="text" name="peso" value="{{ old('peso') }}" placeholder="Peso" class="borda-preta">
                     {{ $errors->has('peso') ? $errors->first('peso') : ' ' }}
 
-
                     <select name="unit_id">
                         <option> -- Selecione a Unidade de Medida --</option>
                         @foreach($unidades as $unidade)

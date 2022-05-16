@@ -33,7 +33,6 @@
                     <input type="text" name="peso" value="{{ $produto->peso ?? old('peso') }}" placeholder="Peso" class="borda-preta">
                     {{ $errors->has('peso') ? $errors->first('peso') : ' ' }}
 
-
                     <select name="unit_id">
                         <option> -- Selecione a Unidade de Medida --</option>
                         @foreach($unidades as $unidade)
@@ -43,7 +42,7 @@
                     {{ $errors->has('unit_id') ? $errors->first('unit_id') : ' ' }}
 
 
-                    <button type="submit" class="borda-preta"> <b>Cadastrar</b> </button>
+                    <button type="submit" class="borda-preta"> <b>Salvar</b> </button>
                 </form>
             </div>
         </div>
