@@ -47,8 +47,9 @@ Route::middleware(['autenticacao:ldap, visitante, p3, p4'])->prefix('/app')->gro
     Route::get('/fornecedor/excluir/{id?}', [FornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
 
     //Produtos
-    Route::get('/product', [ProductController::class, 'index'])->name('app.product'); //Sem --resource
-    Route::resource('produto', ProdutoController::class)->name('index','app.produto');
+    //Route::get('/product', [ProductController::class, 'index'])->name('app.product'); //Sem --resource
+    Route::resource('produto', ProdutoController::class)
+        ->name('index','app.produto')->name('create', 'app.produto.create');
 });
 
 

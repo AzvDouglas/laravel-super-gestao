@@ -7,7 +7,7 @@
 <div class="conteudo-pagina">
 
     <div class="titulo-pagina">
-        <h1>Fornecedor</h1>
+        <h1>Adicionar Fornecedor</h1>
     </div>
 
     <div class="menu">
