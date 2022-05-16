@@ -15,7 +15,7 @@
 
     <div class="menu">
         <ul>
-            <li> <a href="{{ route('app.produto.create') }}"> Novo </a> </li>
+            <li> <a href="{{ route('produto.create') }}"> Novo </a> </li>
             <li> <a href=" "> Consulta </a> </li>
         </ul>
 
@@ -38,7 +38,7 @@
                 @foreach($produtos as $produto)
                     <tr>
                         <td>{{ $produto->nome }}</td>
-                        <td>{{ $produto->decricao }}</td>
+                        <td>{{ $produto->descricao }}</td>
                         <td>{{ $produto->peso }}</td>
                         <td>{{ $produto->unit_id }}</td>
                         <td> <a href="">Exlcuir</a> </td>

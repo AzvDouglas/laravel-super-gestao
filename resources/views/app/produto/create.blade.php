@@ -12,7 +12,7 @@
 
         <div class="menu">
             <ul>
-                <li> <a href="{{ route('app.produto') }} "> Voltar </a> </li>
+                <li> <a href="{{ route('produto.index') }}"> Voltar </a> </li>
                 <li> <a href=" "> Consulta </a> </li>
             </ul>
         </div>
@@ -20,20 +20,27 @@
         <div class="informacao-pagina">
 
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
-                <form method="post" action=" ">
+                <form method="post" action="{{ route('produto.store') }}">
                     @csrf
-                    <input type="text" name="nome" value="" placeholder="Nome" class="borda-preta">
+                    <input type="text" name="nome" value="{{ old('nome') }}" placeholder="Nome" class="borda-preta">
+                    {{ $errors->has('nome') ? $errors->first('nome') : ' ' }}
 
-                    <input type="text" name="descricao" value="" placeholder="Descrição" class="borda-preta">
+                    <input type="text" name="descricao" value="{{ old('descricao') }}" placeholder="Descrição" class="borda-preta">
+                    {{ $errors->has('descricao') ? $errors->first('descricao') : ' ' }}
 
-                    <input type="text" name="peso" value="" placeholder="Peso" class="borda-preta">
+
+                    <input type="text" name="peso" value="{{ old('peso') }}" placeholder="Peso" class="borda-preta">
+                    {{ $errors->has('peso') ? $errors->first('peso') : ' ' }}
+
 
                     <select name="unit_id">
                         <option> -- Selecione a Unidade de Medida --</option>
                         @foreach($unidades as $unidade)
-                            <option value="{{$unidade->id}}"> {{$unidade->description}} </option>
+                            <option value="{{$unidade->id}}" {{ old('unit_id') == $unidade->id ? 'selected' : '' }}> {{$unidade->id}} </option>
                         @endforeach
                     </select>
+                    {{ $errors->has('unit_id') ? $errors->first('unit_id') : ' ' }}
+
 
                     <button type="submit" class="borda-preta"> <b>Cadastrar</b> </button>
                 </form>

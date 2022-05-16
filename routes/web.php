@@ -48,8 +48,8 @@ Route::middleware(['autenticacao:ldap, visitante, p3, p4'])->prefix('/app')->gro
 
     //Produtos
     //Route::get('/product', [ProductController::class, 'index'])->name('app.product'); //Sem --resource
-    Route::resource('produto', ProdutoController::class)
-        ->name('index','app.produto')->name('create', 'app.produto.create');
+    Route::resource('produto', ProdutoController::class); //Não é necessário setar nome nas rotas com o método resource
+        // Os nomes são pré-definidos como 'nome da rota associado ao controlador'.'método do controlador' ->name('name.method')
 });
 
 
