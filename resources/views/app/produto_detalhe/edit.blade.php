@@ -17,7 +17,6 @@
         </div>
 
         <div class="informacao-pagina">
-
             <h4>Produto</h4>
             <div>Nome: {{ $produto_detalhe->produto->nome }}</div> <br>
             <div>Descrição: {{ $produto_detalhe->produto->descricao }}</div> <br>

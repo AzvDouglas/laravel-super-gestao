@@ -12,7 +12,7 @@ class Produto extends Model
     protected $table = 'products';
     protected $fillable = ['nome', 'descricao', 'peso', 'unit_id'];
 
-    public function produtoDetalhes()
+    public function produtoDetalhe()
     {
         return $this->hasOne(ProdutoDetalhe::class, 'product_id');
     }
