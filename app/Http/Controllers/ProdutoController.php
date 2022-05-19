@@ -16,24 +16,20 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        //        echo 'Produto';
         $produtos = Produto::paginate(10);
-
-        foreach ($produtos as $produto) {
-            print_r($produto->getAttributes());
-            echo '<br><br>';
+/*  Em vez desse foreach podemos estabelecer o relacionamento de 1 pra 1 através do Eloquente ORM
+        foreach ($produtos as $key=>$produto) {
 
             $produtoDetalhe = ProdutoDetalhe::where('product_id', $produto->id)->first();
 
             if(isset($produtoDetalhe)) {
-                print_r($produtoDetalhe->getAttributes());
 
-                $produto[$key]['length'] = $produtoDetalhe->length;
-                $produto[$key]['width'] =  $produtoDetalhe->width;
-                $produto[$key]['height'] = $produtoDetalhe->height;
+                $produtos[$key]['length'] = $produtoDetalhe->length;
+                $produtos[$key]['width'] =  $produtoDetalhe->width;
+                $produtos[$key]['height'] = $produtoDetalhe->height;
             }
-            echo '<hr>';
         }
+*/
         return view('app.produto.index', ['produtos'=>$produtos, $request->all()] );
     }
 
