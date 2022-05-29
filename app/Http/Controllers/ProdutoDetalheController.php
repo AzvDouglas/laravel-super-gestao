@@ -58,9 +58,9 @@ class ProdutoDetalheController extends Controller
      * @param  ProdutoDetalhe $produtoDetalhe
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProdutoDetalhe $produtoDetalhe)
+    public function edit($id)
     {
-        //$produtoDetalhe = ProdutoDetalhe::with('produto')->find($id);
+        $produtoDetalhe = ProdutoDetalhe::with('produto')->find($id); //Eager Loading
         $unidades = Unidade::all();
         return view('app.produto_detalhe.edit', ['produto_detalhe' => $produtoDetalhe, 'unidades' => $unidades]);
     }
