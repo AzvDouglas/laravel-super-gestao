@@ -2,6 +2,10 @@
     img, svg {
         width: 30px;
     }
+    p {
+        text-align: center;
+    }
+
 </style>
 <div class="conteudo-pagina">
 
@@ -40,10 +44,31 @@
                             <td> <a href="{{ route('app.fornecedor.excluir', $fornecedor->id) }}">Exlcuir</a> </td>
                             <td> <a href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">Editar</a> </td>
                         </tr>
+                        <tr>
+                            <td colspan="6">
+                                <p> Lista de Produtos </p>
+                                <table border="1" style="margin:20px">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nome</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($fornecedor->produtos as $produto)
+                                            <tr>
+                                                <td>{{ $produto->id }}</td>
+                                                <td>{{ $produto->nome }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
-
             </table>
+
                 <div class="paginacao">
                     {{ $fornecedores->appends($request)->links()}} <br>
                     <!--Paginação de Registros-->
