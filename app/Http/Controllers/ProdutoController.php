@@ -16,7 +16,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Produto::with('produtoDetalhe')->paginate(10); //Eager Loading
+        $produtos = Produto::with('produtoDetalhe','fornecedor')->paginate(10); //Eager Loading
 
 /*  Em vez desse foreach podemos estabelecer o relacionamento de 1 pra 1 através do Eloquente ORM
         foreach ($produtos as $key=>$produto) {

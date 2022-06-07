@@ -17,4 +17,9 @@ class Produto extends Model
         return $this->hasOne(ProdutoDetalhe::class, 'product_id');
     }
 
+    public function fornecedor()
+    {
+        return $this->belongsTo(Fornecedor::class, 'fornecedor_id');
+    }
+
 }
