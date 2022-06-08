@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PedidoProdutoController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProdutoDetalheController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +54,10 @@ Route::middleware(['autenticacao:ldap, visitante, p3, p4'])->prefix('/app')->gro
     Route::resource('produto', ProdutoController::class); //Não é necessário setar nome nas rotas com o método resource
         // Os nomes são pré-definidos como 'nome da rota associado ao controlador'.'método do controlador' ->name('name.method')
     Route::resource('produto-detalhe', ProdutoDetalheController::class);
+
+    Route::resource('cliente', ClienteController::class);
+    Route::resource('pedido', PedidoController::class);
+    Route::resource('pedido-produto', PedidoProdutoController::class);
 });
 
 
