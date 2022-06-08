@@ -19,7 +19,6 @@
 
     <div class="informacao-pagina">
         {{ $msg }}
-
         <div style="width: 30%; margin-left: auto; margin-right: auto;">
             <form method="post" action="{{ route('app.fornecedor.adicionar') }}">
                 <input type="hidden" name="id" value="{{ $fornecedor->id ?? '' }}">

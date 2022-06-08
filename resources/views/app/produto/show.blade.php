@@ -34,6 +34,10 @@
                         <td>{{ $produto->descricao }}</td>
                     </tr>
                     <tr>
+                        <td>Fornecedor: </td>
+                        <td>{{ $produto->fornecedor->nome }}</td>
+                    </tr>
+                    <tr>
                         <td>Peso: </td>
                         <td>{{ $produto->peso }}</td>
                     </tr>

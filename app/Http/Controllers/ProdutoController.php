@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fornecedor;
 use App\Models\Produto;
 use App\Models\ProdutoDetalhe;
 use App\Models\Unidade;
@@ -43,7 +44,8 @@ class ProdutoController extends Controller
     {
         //
         $unidades = Unidade::all();
-        return view('app.produto.create', ['unidades'=>$unidades]);
+        $fornecedores = Fornecedor::all();
+        return view('app.produto.create', ['unidades'=>$unidades, 'fornecedores'=>$fornecedores]);
     }
 
     /**
@@ -59,13 +61,15 @@ class ProdutoController extends Controller
             'nome' => 'required|min:3|max:40',
             'descricao' => 'required|min:7|max:2000',
             'peso' => 'required',
-            'unit_id' => 'exists:units,id'
+            'unit_id' => 'exists:units,id',
+            'fornecedor_id' => 'exists:fornecedor,id'
         ];
         $feedback = [
             'required'=> 'O campo :attribute deve ser preenchido',
-            'min' => 'O campo :attribute deve ter pelo menos :attribute.min caracteres',
-            'max' => 'O campo :attribute deve ter menos que :attribute.min caracteres',
-            'unit_id.exists' => 'Selecione uma unidade de medida válida'
+            'min' => 'O campo :attribute deve ter pelo menos :min caracteres',
+            'max' => 'O campo :attribute deve ter menos que :max caracteres',
+            'unit_id.exists' => 'Selecione uma unidade de medida válida',
+            'fornecedor_id.exists' => 'Selecione um fornecedor válido'
         ];
 
         $request->validate($regras, $feedback);
@@ -95,7 +99,8 @@ class ProdutoController extends Controller
     {
         //
         $unidades = Unidade::all();
-        return view('app.produto.edit', ['produto'=>$produto, 'unidades'=>$unidades]);
+        $fornecedores = Fornecedor::all();
+        return view('app.produto.edit', ['produto'=>$produto, 'unidades'=>$unidades, 'fornecedores'=>$fornecedores]);
     }
 
     /**
@@ -113,6 +118,22 @@ class ProdutoController extends Controller
     */
     public function update(Request $request, Produto $produto)
     {
+        $regras = [
+            'nome' => 'required|min:3|max:40',
+            'descricao' => 'required|min:7|max:2000',
+            'peso' => 'required',
+            'unit_id' => 'exists:units,id',
+            'fornecedor_id' => 'exists:fornecedor,id'
+        ];
+        $feedback = [
+            'required'=> 'O campo :attribute deve ser preenchido',
+            'min' => 'O campo :attribute deve ter pelo menos :min caracteres',
+            'max' => 'O campo :attribute deve ter menos que :max caracteres',
+            'unit_id.exists' => 'Selecione uma unidade de medida válida',
+            'fornecedor_id.exists' => 'Selecione um fornecedor válido'
+        ];
+        $request->validate($regras, $feedback);
+
         //Método update passando o payload por parâmetro  para a instância do objeto $produto
         $produto->update($request->all());
         return redirect()->route('produto.show',['produto'=>$produto->id]);
