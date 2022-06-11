@@ -53,7 +53,7 @@ class PedidoController extends Controller
         $pedido->cliente_id = $request->cliente_id;
         $pedido->save();
 
-        return redirect()->route('pedido.index'); 
+        return redirect()->route('pedido.index');
     }
 
     /**
