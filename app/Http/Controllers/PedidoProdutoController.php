@@ -27,7 +27,7 @@ class PedidoProdutoController extends Controller
     public function create(Pedido $pedido)
     {
         //$produtos = PedidoProduto::where('pedido_id', $pedido->id)->get();
-        $produtos = Produto::all()
+        $produtos = Produto::all();
         return view('app.pedido_produto.create', ['pedido' => $pedido, 'produtos' => $produtos]);
 
     }
@@ -38,9 +38,15 @@ class PedidoProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Pedido $pedido)
     {
-        //
+        //Debug
+        echo '<pre>';
+        print_r($pedido);
+        echo '</pre>';
+        echo '<hr>';
+        print_r($request->all());
+        echo '<hr>';
     }
 
     /**
