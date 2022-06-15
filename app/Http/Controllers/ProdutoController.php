@@ -19,7 +19,7 @@ class ProdutoController extends Controller
     {
         $produtos = Produto::with('produtoDetalhe','fornecedor')->paginate(10); //Eager Loading
 
-/*  //Em vez desse foreach podemos estabelecer o relacionamento de 1 pra 1 através do Eloquente ORM
+/*  //Em vez desse foreach posso estabelecer o relacionamento de 1 pra 1 através do Eloquente ORM
         foreach ($produtos as $key=>$produto) {
 
             $produtoDetalhe = ProdutoDetalhe::where('product_id', $produto->id)->first();

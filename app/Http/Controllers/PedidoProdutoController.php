@@ -40,13 +40,22 @@ class PedidoProdutoController extends Controller
      */
     public function store(Request $request, Pedido $pedido)
     {
-        //Debug
-        echo '<pre>';
-        print_r($pedido);
-        echo '</pre>';
-        echo '<hr>';
-        print_r($request->all());
-        echo '<hr>';
+        //Validação
+        $regras = [
+            'produto_id' => 'required|exists:produto,id'
+        ];
+        $feedback = [
+            'produto_id.required' => 'O produto informado não existe'
+        ];
+        $request->validate($regras, $feedback);
+
+        //Criando relação pedido-produto
+        $pedidoProduto = new PedidoProduto();
+        $pedidoProduto->pedido_id = $pedido->id;
+        $pedidoProduto->produto_id = $request->get('produto_id');
+        $pedidoProduto->save();
+
+        return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
     }
 
     /**
