@@ -24,13 +24,33 @@
 
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
                 <h4>Itens do Pedido</h4>
-                {{ $pedido }}
+                <table border="1" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Data de inclusão</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($pedido->produtos as $produto)
+                            <tr>
+                                <td>{{ $produto->id }}</td>
+                                <td>{{ $produto->nome }}</td>
+                                <td>{{ $produto->pivot->quantidade }}</td>
+                                <td>{{ $produto->pivot->created_at->format('d/m/y') }}</td><!-- Dessa forma pega a data (do pedido) na tabela auxiliar -->
+                                <!-- <td>{{ $produto->created_at }}</td>--><!-- Dessa forma pega a data do produto -->
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
                 @component('app.pedido_produto._components.form_create', ['pedido' => $pedido, 'produtos' => $produtos])
                 @endcomponent
             </div>
         </div>
 
-    </div>
+    </div>  <!-- Fim da div conteudo-pagina -->
 
 @endsection
 

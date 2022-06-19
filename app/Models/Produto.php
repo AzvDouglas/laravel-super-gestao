@@ -14,12 +14,17 @@ class Produto extends Model
 
     public function produtoDetalhe()
     {
-        return $this->hasOne(ProdutoDetalhe::class, 'product_id');
+        return $this->hasOne(ProdutoDetalhe::class, 'product_id', 'id');
     }
 
     public function fornecedor()
     {
         return $this->belongsTo(Fornecedor::class, 'fornecedor_id');
+    }
+
+    public function pedidos()
+    {
+        return $this->belongsToMany(Pedido::class, 'pedido_produtos', 'produto_id', 'pedido_id');
     }
 
 }

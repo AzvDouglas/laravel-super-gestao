@@ -30,8 +30,9 @@ class PedidoProdutoController extends Controller
         $produtos = Produto::all();
         //Eager loading:
         $pedido->produtos;  // equivalente a $produtos = $pedido->produtos;
+
         //$pedido->produtos()->sync([]);
-        //$pedido->load('produtos');
+        ///$pedido->load('produtos');
         return view('app.pedido_produto.create', ['pedido' => $pedido, 'produtos' => $produtos]);
 
     }
@@ -46,19 +47,26 @@ class PedidoProdutoController extends Controller
     {
         //Validação
         $regras = [
-            'produto_id' => 'required|exists:produto,id'
+            'produto_id' => 'required|exists:products,id'
         ];
         $feedback = [
             'produto_id.required' => 'O produto informado não existe'
         ];
         $request->validate($regras, $feedback);
-
+/*
         //Criando relação pedido-produto
         $pedidoProduto = new PedidoProduto();
         $pedidoProduto->pedido_id = $pedido->id;
         $pedidoProduto->produto_id = $request->get('produto_id');
+        $pedidoProduto->quantidade = $request->get('quantidade');
         $pedidoProduto->save();
-
+*/
+        //Inserindo registros por relacionamento
+        $pedido->produtos; //Carrega os regisros do relacionamento (tabela intermediaria/auxiliar) para o cache
+        $pedido->produtos(); //Objeto que manipula o relacionamento
+        $pedido->produtos()->attach(
+            $request->get('produto_id'), //Produto a ser associado ao pedido
+            ['quantidade' => $request->get('quantidade')]); //Array com colunas da tabela  auxiliar e valores
         return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
     }
 
