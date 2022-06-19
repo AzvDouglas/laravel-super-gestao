@@ -28,6 +28,10 @@ class PedidoProdutoController extends Controller
     {
         //$produtos = PedidoProduto::where('pedido_id', $pedido->id)->get();
         $produtos = Produto::all();
+        //Eager loading:
+        $pedido->produtos;  // equivalente a $produtos = $pedido->produtos;
+        //$pedido->produtos()->sync([]);
+        //$pedido->load('produtos');
         return view('app.pedido_produto.create', ['pedido' => $pedido, 'produtos' => $produtos]);
 
     }
