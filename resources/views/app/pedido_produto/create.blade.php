@@ -31,6 +31,7 @@
                             <th>Produto</th>
                             <th>Quantidade</th>
                             <th>Data de inclusão</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,15 @@
                                 <td>{{ $produto->pivot->quantidade }}</td>
                                 <td>{{ $produto->pivot->created_at->format('d/m/y') }}</td><!-- Dessa forma pega a data (do pedido) na tabela auxiliar -->
                                 <!-- <td>{{ $produto->created_at }}</td>--><!-- Dessa forma pega a data do produto -->
+                                <td>
+                                    <form id="form_{{ $produto->pivot->id }}" method="post"
+                                          action="{{ route('pedido-produto.destroy', ['pedidoProduto'=>$produto->pivot->id, 'pedido_id' => $pedido->id]) }}">
+                                        @method('DELETE')
+                                        @csrf
+                                        <a href="#" onclick="document.getElementById('form_{{ $produto->pivot->id }}').submit()">
+                                            Excluir</a>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
